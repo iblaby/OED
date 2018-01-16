@@ -1,1 +1,1 @@
-# OED
+# Optimal Experimental Design
