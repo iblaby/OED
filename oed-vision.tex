@@ -1,0 +1,467 @@
+% here is the DOI:
+% 10.6084/m9.figshare.5339896
+%--------------------------------------------------------------%
+
+\documentclass[11pt]{article}
+
+%% \usepackage{times}
+% \usepackage{newcent}
+%% FONTS
+%% To get the default sans serif font in latex, uncomment following
+%% line:
+%% Note: the default sf font is much nicer than ariel/helvetica
+ \renewcommand*\familydefault{\sfdefault}
+%%
+%% to get Arial font as the sans serif font, uncomment following line:
+% \renewcommand{\sfdefault}{phv} % phv is the Arial font
+%%
+%% to get Helvetica font as the sans serif font, uncomment following line:
+% \usepackage{helvet}
+ \usepackage{wrapfig}
+%% NATBIB is the one to use here. Just be careful since it puts space
+%% between references; there's probably some customization that
+%% compresses the space out (like the cite package does).
+%% For CDI, space was tight so we went back to cite2
+% \usepackage[square,numbers,sort&compress]{natbib}
+%% note that hyperref has problems with the cite package--better to
+%% use natbib
+% \usepackage[sort,nocompress]{cite}
+ \usepackage[sort,compress]{cite}
+\usepackage[margin=0pt,labelsep=space,footnotesize,labelfont=bf,up,belowskip=-10pt,aboveskip=5pt]{caption}
+%\usepackage[small,bf,up]{caption}
+\renewcommand{\captionfont}{\footnotesize}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{graphics,epsfig,graphicx,float,subfigure,color}
+\usepackage{algorithm,algorithmic}
+\usepackage{amsmath,amssymb,amsbsy,amsfonts,amsthm}
+\usepackage{multicol}
+% \usepackage{subsec}
+\usepackage{comment}
+\usepackage{array}
+\usepackage{marvosym}
+\usepackage{url}
+\usepackage{boxedminipage}
+ \usepackage[sf,bf,small]{titlesec}
+% \usepackage[sf,bf,small,compact]{titlesec}
+% \usepackage[textsize=footnotesize]{todonotes}
+ \usepackage[plainpages=false, colorlinks=true,
+   citecolor=blue, filecolor=black, linkcolor=blue,
+   urlcolor=blue]{hyperref}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{pdfpages}
+\usepackage{paralist}
+\usepackage{enumitem}
+\usepackage{doi}
+% \usepackage{showkeys}
+ \usepackage[bottom]{footmisc}
+
+%\newcommand{\gbIn}[1]{\textcolor{magenta}{#1}}
+\newcommand{\gbIn}[1]{{#1}}
+\newcommand{\gbOut}[1]{}
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+% see documentation for titlesec package
+% \titleformat{\section}{\large \sffamily \bfseries}
+\titlelabel{\thetitle.\,\,\,}
+% \titlespacing*{\section}{0pt}{2ex}{0.5ex}
+% \titlespacing*{\subsection}{0pt}{1.5ex}{0.25ex}
+%% \titlespacing*{\subsubsection}{0pt}{1ex}{0ex}
+
+% \renewcommand{\baselinestretch}{0.984}
+
+\newcommand{\gbf}[1]{\text{\boldmath${#1}$\unboldmath}}
+\newcommand{\bs}{\boldsymbol}
+
+\newcommand{\edot}{\dot{\gbf{\varepsilon}}}
+\newcommand{\secinve}{\edot_\mathrm{II}}
+\newcommand{\secinvt}{\gbf{\tau}_\mathrm{II}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cR}{\mathcal{R}}
+
+\newcommand{\obs}{\mathrm{obs}}
+
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\alert}[1]{\textcolor{red}{#1}}
+% \newcommand{\alert}[1]{\textcolor{SkyBlue3}{#1}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\tcred}[1]{\textcolor{red}{#1}}
+
+\newcommand{\mcone}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\tentwo}[1] {\ensuremath{\boldsymbol{#1}}}
+\newcommand{\tenfour}[1] {\ensuremath{\boldsymbol{\mathsf{#1}}}}
+\renewcommand{\vec}[1] {\ensuremath{\boldsymbol{#1}}}
+
+\newcommand{\zapspace}{\topsep=0pt\partopsep=0pt\itemsep=0pt\parskip=0pt}
+
+\newcommand{\footnoteremember}[2]{\footnote{#2}\newcounter{#1}\setcounter{#1}{\value{footnote}}}
+
+\newcommand{\footnoterecall}[1]{\footnotemark[\value{#1}]}
+
+%\newcommand{\AdM}{additive manufacturing}
+\newcommand{\AdM}{AM}
+
+
+
+\definecolor{darkred}{rgb}{.6,.1,.1}
+\definecolor{darkblue}{rgb}{.1,.1,.9}
+\definecolor{grass}{rgb}{.19,.64,.13}
+\definecolor{darkgreen}{RGB}{0,170,0}
+
+
+\newcommand{\app}{\textcolor{darkred}}
+\newcommand{\thrust}{\textcolor{darkblue}}
+\newcommand{\theme}{\textcolor{red}}
+\newcommand{\resthrust}{\textcolor{darkgreen}}
+
+\newcommand{\AM}{AM } % AM = applied math
+\newcommand{\CSE}{CS\&E}
+\setlength{\emergencystretch}{20pt}
+
+\addtolength{\skip\footins}{-5pt}
+
+\begin{document}
+
+
+\begin{center}
+{\large \textbf{ A Unified Mathematical, Computational, and
+    Experimental Approach for Integrating Data and Models}}
+\end{center}
+%
+
+\section{Overview}
+
+The scientific method entails the systematic acquisition of knowledge
+about our world via the continuous interplay of theory, computation
+and experiment---that is, of models and data. The rapid ascendance of
+high performance computing has radically transformed our ability to
+model complex multiscale systems and analyze complex multimodal
+data. A recent surge of interest in machine learning has brought
+renewed emphasis to the opportunities that lie in learning from data,
+yet the robust and rigorous application of machine learning in the
+scientific context remains in its infancy.
+
+To capitalize on these advances in modeling capabilities and on DOE's
+considerable investment in experimental facilities, there is a
+critical need for {\em a principled, rigorous, and scalable
+  mathematical approach to optimally guide the interplay between
+  complex models and complex data---and to account for uncertainty in
+  the process}.  In current practices, the methodologies by which
+experiments inform theory, and theory guides experiments, remain ad
+hoc, particularly when the physical systems under study are
+multiscale, large-scale, and complex.  Off-the-shelf machine learning
+methods are not the answer---these methods have been successful in
+problems for which massive amounts of data are available and for which
+a predictive capability does not rely upon the constraints of physical
+laws.  The need to address this fundamental problem has become urgent,
+as computational science attempts to tackle models that span wider
+ranges of scales, represent richer interacting physics, and inform
+decisions of greater societal consequence.
+
+Here we argue for a research program aimed at developing {\em a
+  unified approach (mathematical, computational, and experimental) for
+  the systematic integration of complex multimodal data and complex
+  multiscale models via physics-based inference, scientific machine learning,
+  and goal-oriented optimal experimental design.}  The interaction
+between models and data occurs in two directions:
+ \vspace{-0.15cm}
+ \begin{itemize}%[leftmargin=10pt]
+ \zapspace
+ \item The problem of how data can be used to inform models is
+   fundamentally an {\bf inverse problem}. While inverse theory has a
+   long history, only in recent years has it become tractable to
+   rigorously address inverse problems under uncertainty. Bayesian
+   inverse theory provides a rational and systematic approach for
+   learning from data through the lens of models under both data and
+   model uncertainty, producing a probability distribution as the
+   inverse solution.  However, in the context of large-scale complex
+   models, numerous challenges must be overcome, including the
+   multiscale and multiphysics nature of the models, the high
+   dimensionality and heterogeneity of parameter space, the
+   availability of multiple competing models and their structural
+   uncertainties, the multimodality and complexity of data (which can
+   stem from experiments, observations, and simulations), and the need
+   to incorporate complex nonlinear constraints into priors that
+   inform inference and machine learning algorithms.
+
+\item How, where, when, and from which source to acquire experimental,
+  observational, or simulation data to optimally inform models
+%  toward   achieving
+  with respect to a particular goal or goals is fundamentally an {\bf
+    optimal experimental design (OED) problem}. Probability provides a
+  powerful approach for addressing these problems: since the inverse
+  problem solution is equipped with quantified uncertainties, the OED
+  problem naturally seeks to design experiments to minimize the
+% cost of
+  uncertainty in predictions of interest.  Thus, the OED problem
+  inherits all of the challenges for inverse problems described above,
+  including model and data complexity and high
+  dimensionality. Moreover, because solutions of nonlinear inverse
+  problems depend on the data, the inverse problem is formally
+  embedded as a constraint within the OED problem, rendering the
+  latter prohibitive using conventional methods.
+
+\end{itemize}
+
+% {\bf Applications.}
+% The set of methods
+  The framework described above can be applied to a host of problems
+  of interest to the Department of Energy.  To make the above ideas
+  concrete, however, we propose to develop the necessary mathematical
+  and computational aspects of this approach in the context of the
+  rational design of new materials. This includes (1) autonomous
+  optimal design of experiments for synthesis-by-assembly and (2)
+  combining machine learning with dynamical mean field theory for
+  strongly correlated materials discovery.  In (1) the challenge is to
+  use multiscale models integrated with the synthesis capabilities at
+  the Center for Functional Nanomaterials to design autonomously and
+  optimally synthesize new materials not through conventional
+  small-molecule chemical synthesis, but instead by
+  mixing-and-matching nanoscale components.  In (2) the challenge is
+  is how to enable the discovery of new materials with targeted
+  functionalities in strongly correlated systems.  These two
+  applications span the space of the types of Department of Energy BES
+  experimental user facilities and stress-test the capabilities with
+  challenging problems.  The tools should be broadly applicable beyond
+  the applications here.
+
+It is clear that creating the mathematical approach described
+above---in which models optimally learn from data and data acquisition
+is optimally guided by models---presents mathematical and
+computational challenges of the highest order when the systems of
+interest are complex, multiscale, strongly interacting/correlated, {\em and}
+uncertain. But these challenges must be overcome to realize the
+promise of predictive science: experiments and high-resolution
+simulations are too expensive for experimental design to be conducted
+in an ad hoc fashion and for the resulting data not to be exploited to
+its very fullest.
+
+We argue that the key to overcoming these mathematical and
+computational challenges is to exploit the mathematical structure of
+the inverse/learning and OED problems, for example the nonlinearity,
+smoothness, sparsity, low dimensionality, and hierarchical structure
+of the maps from inversion parameters to observables (for the inverse
+problem) and from experimental design variables to posterior
+uncertainties (for the OED problem).  Novel machine learning methods
+that build in as much physics knowledge as possible will be required.
+A critical issue is that methods that view these maps as black boxes
+cannot efficiently exploit the structure of the inverse and OED
+problems. Instead, intrusive algorithms that ``open up the black box''
+must be developed, building on advances in Bayesian methods,
+uncertainty quantification, randomized algorithms, low-rank
+approximation, hierarchical matrices, model reduction, manifold
+learning, PDE-constrained optimization, high-dimensional approximation
+theory, higher-order adjoint methods, tensor methods, parallel
+algorithms, and others.
+
+Significant computational and mathematical work in this direction has
+been undertaken by the DiaMonD MMICC Center funded by ASCR. The
+resulting algorithms have been applied to Bayesian inverse and
+stochastic optimization problems involving complex applications with
+as many as $10^6$ parameters.  Algorithmic complexity (measured in the
+number of forward model solves) has been demonstrated to be
+independent of parameter, data, and optimization variable dimensions.
+However, significant work remains to overcome the difficulties posed
+by the most challenging multiscale, multiphysics DOE application
+problems.  Moreover, BNL's expertise in workflow design, and complex
+modeling and machine learning frameworks integrated with experimental
+facilities can be leveraged.  Key to success also requires continued
+development of theory and models for the systems of interest.
+
+\section{Materials Science Challenges}
+
+\subsection{Synthesis by Assembly}
+
+The grand challenge of modern materials science is the rational design
+of new materials, where given a desired material functionality, the
+material structure is predicted; and for that particular structure,
+appropriate constituents and assembly processes are
+designed. Synchrotron x-ray scattering plays an essential role in
+unraveling these relationships, by providing a powerful tool to probe
+the structure of materials in situ. With the needs for material
+functionality becoming more diverse, stringent, and sophisticated, the
+complexity of materials continues to increase. The relevant parameter
+spaces expand correspondingly, arising from both the multi-component
+nature of functional materials and a multitude of processing
+conditions. All of this implies that optimizing functionality requires
+strategic exploration of the vast parameter and model structure space
+that is associated with complex materials. To meet this challenge, the
+way we investigate materials structure by x-ray scattering needs to
+evolve, to become more efficient and intelligent.  We propose to build
+towards a new paradigm of scientific discovery, where automatable
+tasks are ceded to machine control, and human experts are liberated to
+work on the challenging high level problems of truly understanding and
+applying materials science. Specifically, our goal is to implement a
+prototype autonomous x-ray scattering instrument at the Complex
+Materials Scattering beamline (CMS/11-BM) at National Synchrotron
+Light Source II (NSLS-II). We have already been making rapid progress
+with automating the beamline data collection workflow and developing
+data analysis pipelines. A key missing component is autonomous
+experimental decision-making. This initiative will develop an online
+experimental control system that leverages both real-time data
+analysis and materials theory to make optimal experimental
+choices. Autonomous decision making will enable materials discovery of
+a speed and scope previously unattainable.
+
+Our approach leverages novel methods in goal-oriented Bayesian optimal
+experimental design.  In a nutshell, we cast the problem of selecting
+the next experiment (sample, processing conditions, measurement
+parameters, etc.) as an optimization problem under uncertainty. The
+quantity to be optimized can be tuned to the materials system and the
+particular problem under study. For instance, one can design a target
+metric to maximize the coverage of a parameter space to enable
+intelligent mapping, to maximize rigorously-defined metrics of
+surprise and creativity in order to emphasize novel discovery, or to
+maximize a targeted material structure in order to autonomously
+discover an optimized synthesis protocol.
+
+The CMS beamline is well positioned to tackle this challenging
+project, because most of the components necessary for autonomous x-ray
+scattering experiments are either in place or in an advanced stage of
+development. Routine operations at CMS already utilize a series of
+automated data collection steps, and their versatility is continually
+being enhanced through improvements in software codes. Moreover, we
+have recently made significant progress with expanding accessible
+sample parameter spaces by implementing several in-situ sample
+environments and installing a robotic sample exchanger to increase
+throughput. Finally, the ongoing development of real-time data
+analysis pipelines and classification for x-ray scattering images is
+now mature enough for initial deployment and testing at
+CMS. Nevertheless, these developments alone are insufficient, allowing
+for parameter-space explorations that are only exhaustive or
+intuition-guided. By closing the feedback loop with an automated
+decision-making capability that is well informed by available
+knowledge, this project will enable autonomous experiments that can
+navigate intelligently through enormous parameter spaces.  Overall,
+this project will empower a bold new vision of materials discovery,
+wherein scientists can define their scientific problem at a high
+level, as an optimization target, and allow the x-ray scattering
+instrument to autonomously discover relevant physics. We will focus on
+solving specific experimental materials science problems, so that we
+can (1) demonstrate proof-of-concept (as a basis for future funding),
+(2) develop new generalizable algorithms for autonomous
+experimentation, and (3) uncover new physical insights for the
+selected materials systems. This work will establish a capability at
+BNL for model-based control and design of experiments to accelerate
+discovery at experimental facilities. The novelty of the computational
+science and applied mathematics will be in the development of accurate
+and scalable approximate methods for optimal experimental design
+problems under uncertainty.
+% that scale well with computational resources.
+
+\subsection{Strongly Correlated Systems}
+
+One of the most challenging questions in the field of materials
+science is how to enable the discovery of new materials with targeted
+functionalities. Materials of interest range over binary, ternary,
+quaternary, and quinary combinations of a wide range of elements,
+rendering the material phase space immense.  Multiple strategies do
+exist to attempt to classify this space.  In one, one uses massive
+simulations in an attempt to explore the phase space for particular
+properties. In another, one uses data mining of large bodies of
+existing experimental data in order to determine structure-property
+relations.  A more recent approach that has been applied recently to
+weakly correlated materials such as zeolite structures,
+inorganic/organic hybrids, and semiconducting heterostructures is
+machine learning.  Machine learning algorithms allow one to perform
+predictive analytics based on the detection of patterns and
+correlations in large datasets. We will be particularly interested in
+active learning algorithms, machine learning algorithms that interact
+in real time with companion algorithms generating the
+datasets. Ideally in an active learning setting, the machine learning
+algorithm populates the dataset in a maximally efficient manner so
+that its needed size is minimized. We will also employ transfer
+learning, a methodology where we will iteratively improve an existing
+machine learning model using smaller, but higher quality, datasets.
+Machine learning-informed investigation of weakly correlated material
+spaces has seen some progress, both because theoretical tools exist to
+accurately predict material properties for weakly correlated materials
+and because high-throughput synthesis and characterization is possible
+In weakly correlated materials, we have
+a set of well-developed theoretical tools such as Density Functional
+Theory (DFT) that are able to describe their properties. DFT is able
+to do so because the properties of these materials are determined in a
+single electron picture, i.e., electronic band theory is
+correspondingly applicable.
+
+While weakly correlated materials have been studied using machine
+learning, the field of strongly correlated materials has lain
+untouched by such approaches. This is unfortunate. Correlated
+materials have exceptional properties ranging from metal to insulator
+transitions, colossal magnetoresistance, high temperature
+superconductivity, heavy fermion behavior, and huge volume collapses,
+to name but a few.  Heretofore, discoveries in this field of research
+have been made mostly by serendipity. There are very few examples
+where a strongly correlated material was predicted to exist with a
+certain functionality before it was synthesized and characterized
+experimentally. A near miss was the prediction of superconductivity in
+the 112-pnictides BaFeAs2 and BaFeSb3, whereas superconductivity
+was only later shown to exist in the related 112-compound
+Ca1-xLaxFeAs2. It is an aim of this project to improve on this
+record.  The absence of machine learning applied to strongly
+correlated materials is a result of the difficulty of creating a high
+quality database on which a machine learning algorithm can be
+trained. \textcolor{red}{Our approach is based on the central idea
+  that creating a training database is fundamentally a problem in
+  optimal experimental design.} In part this difficulty arises from
+the attendant theoretical challenge. The description of even a single
+point in strongly correlated materials space is difficult. Strongly
+correlated materials are in general not well described by band theory,
+thus rendering DFT inapplicable. Moreover strongly correlated
+materials typically see competing types of order (charge density wave
+formation versus superconductivity) whose energies are very close to
+one another. To determine which prevails requires theoretical
+treatments that are highly accurate. Experimentally, high throughput
+synthesis is a challenge for these same reasons. The synthesis of high
+quality samples of a given strongly correlated material is difficult
+and can take years to perfect.
+
+The overarching objective of this project is to overcome the
+roadblocks that machine learning aided discovery of new strongly
+correlated materials face. While we will target oxide heterostructures
+our success will depend on us meeting four more general objectives: (i)
+To develop and extend the tools, theoretical and algorithmic, based on
+dynamical mean field theory, so that they operate in an HPC
+environment to enable materials discovery via machine learning
+algorithms. (ii) To employ active learning methods combined with
+transfer learning techniques in an HPC environment to better
+guide materials discovery. (iii) To import physics information into
+machine learning algorithms to improve their performance. (iv) To
+perform detailed analysis, both theoretical and experimental, of
+materials identified by our machine learning algorithms as having
+targeted functionalities. Experimentally we will attempt both
+synthesis of the predicted materials using state-of-the-art molecular
+beam epitaxy techniques together with characterization using the
+beamlines at BNL's NSLS-II.
+
+\section{Biological Science Challenges}
+...
+
+\section{High Energy and Nuclear Physics Challenges}
+...
+
+\newpage
+
+\begin{center}
+CONTRIBUTORS (SO FAR)
+\normalsize Francis Alexander, Masafumi Fukuto, Nicholas D'Imperio, Adolfy Hoisie,
+Shantenu Jha, Kerstin Kleese van Dam, Robert Konik, Gabi Kotliar,
+Kevin Yager, Shinjae Yoo (Brookhaven National Laboratory), Omar
+Ghattas, J. Tinsley Oden (UT Austin), Karen Willcox, Youssef Marzouk
+(MIT), Edward R. Dougherty, Xiaoning Qian (Texas A\&M), Kristofer
+Reyes (Buffalo), Lav Varshney (Univ. of Illinois)
+
+\end{center}
+
+
+\end{document}
+
+
